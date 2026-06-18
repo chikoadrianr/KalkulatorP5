@@ -10,7 +10,7 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Segoe UI, sans-serif;
+    font-family:Segoe UI,sans-serif;
 }
 
 body{
@@ -107,14 +107,12 @@ button:hover{
 
 <div class="input-group">
 <label>Himpunan A</label>
-<input type="text" id="setA"
-placeholder="Contoh: 1,2,3,4">
+<input type="text" id="setA" placeholder="Contoh: 1,2,3,4">
 </div>
 
 <div class="input-group">
 <label>Himpunan B</label>
-<input type="text" id="setB"
-placeholder="Contoh: 3,4,5,6">
+<input type="text" id="setB" placeholder="Contoh: 3,4,5,6">
 </div>
 
 </div>
@@ -155,13 +153,13 @@ let irisan=A.filter(x=>B.includes(x));
 let hanyaA=A.filter(x=>!B.includes(x));
 let hanyaB=B.filter(x=>!A.includes(x));
 
-document.getElementById("union").innerHTML=
+document.getElementById("union").innerHTML =
 "<b>A ∪ B</b> = { "+union.join(", ")+" }";
 
-document.getElementById("intersect").innerHTML=
+document.getElementById("intersect").innerHTML =
 "<b>A ∩ B</b> = { "+irisan.join(", ")+" }";
 
-document.getElementById("difference").innerHTML=
+document.getElementById("difference").innerHTML =
 "<b>A − B</b> = { "+hanyaA.join(", ")+" }";
 
 gambarVenn(hanyaA,irisan,hanyaB);
@@ -175,8 +173,9 @@ const svg=document.getElementById("venn");
 const jumlahA=kiri.length+tengah.length;
 const jumlahB=kanan.length+tengah.length;
 
-const radiusA=Math.max(90, jumlahA*18);
-const radiusB=Math.max(90, jumlahB*18);
+/* ukuran awal diperbesar sedikit */
+const radiusA=Math.max(115,jumlahA*18);
+const radiusB=Math.max(115,jumlahB*18);
 
 const cxA=320;
 const cxB=320+Math.min(radiusA,radiusB);
@@ -185,7 +184,8 @@ svg.innerHTML=`
 
 <text x="20" y="30"
 font-size="28"
-font-weight="bold">S</text>
+font-weight="bold"
+fill="#7c3aed">S</text>
 
 <circle
 cx="${cxA}"
@@ -204,20 +204,22 @@ stroke="#0066ff"
 stroke-width="3"/>
 
 <text
-x="${cxA-10}"
+x="${cxA}"
 y="${230-radiusA-20}"
 font-size="28"
 font-weight="bold"
-fill="red">
+fill="red"
+text-anchor="middle">
 A
 </text>
 
 <text
-x="${cxB-10}"
+x="${cxB}"
 y="${230-radiusB-20}"
 font-size="28"
 font-weight="bold"
-fill="#0066ff">
+fill="#0066ff"
+text-anchor="middle">
 B
 </text>
 `;
@@ -229,9 +231,10 @@ let t=document.createElementNS(
 "text"
 );
 
-t.setAttribute("x",cxA-radiusA/2);
-t.setAttribute("y",180+(index*30));
+t.setAttribute("x",cxA-radiusA/3);
+t.setAttribute("y",200+(index*30));
 t.setAttribute("font-size","22");
+t.setAttribute("text-anchor","middle");
 
 t.textContent=item;
 svg.appendChild(t);
@@ -245,9 +248,10 @@ let t=document.createElementNS(
 "text"
 );
 
-t.setAttribute("x",(cxA+cxB)/2-10);
-t.setAttribute("y",180+(index*30));
+t.setAttribute("x",(cxA+cxB)/2);
+t.setAttribute("y",200+(index*30));
 t.setAttribute("font-size","22");
+t.setAttribute("text-anchor","middle");
 
 t.textContent=item;
 svg.appendChild(t);
@@ -261,9 +265,10 @@ let t=document.createElementNS(
 "text"
 );
 
-t.setAttribute("x",cxB+radiusB/4);
-t.setAttribute("y",180+(index*30));
+t.setAttribute("x",cxB+radiusB/3);
+t.setAttribute("y",200+(index*30));
 t.setAttribute("font-size","22");
+t.setAttribute("text-anchor","middle");
 
 t.textContent=item;
 svg.appendChild(t);
